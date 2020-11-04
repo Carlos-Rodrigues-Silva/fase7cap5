@@ -1,0 +1,56 @@
+<h1>Cadastrar Endereço de Estacionamento</h1>
+<form [formGroup]="cadastrarEnderecoForm" (ngSubmit)="onPostSubmit()" method="POST" class="mt-5">
+  <div class="form-group">
+    <input type="text" placeholder="Nome do logradouro" class="mr-2 form-control mr-sm-2 " formControlName="nomeLogradouro">
+    <input type="text" placeholder="Número" class="mr-2 form-control mr-sm-2 mt-2" formControlName="numero">
+    <input type="text" placeholder="CEP" class="mr-2 form-control mr-sm-2 mt-2" formControlName="cep">
+    <input type="text" placeholder="bairro" class="mr-2 form-control mr-sm-2 mt-2" formControlName="bairro">
+    <input type="text" placeholder="cidade" class="mr-2 form-control mr-sm-2 mt-2" formControlName="cidade">
+    <input type="text" placeholder="estado" class="mr-2 form-control mr-sm-2 mt-2" formControlName="estado">
+  </div>
+  <button type="submit" class="btn btn-success my-2 my-sm-0">Cadastrar</button>
+</form>
+
+<div class="container mt-5">
+    <table class="table">
+        <thead>
+          <tr>
+            <!-- <th>Nome</th> -->
+            <th>Id</th>
+            <th>Logradouro</th>
+            <th>Número</th>
+            <th>CEP</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let estacionamento of estacionamentos">
+          <td>{{estacionamento._id}}</td>
+          <td>{{estacionamento.nomeLogradouro}}</td>
+          <td>{{estacionamento.numero}}</td>
+          <td>{{estacionamento.cep}}</td>
+          <td>{{estacionamento.bairro}}</td>
+          <td>{{estacionamento.cidade}}</td>
+          <td>{{estacionamento.estado}}</td>
+          <td>
+              <button class="btn btn-warning" (click)="obterEnderecoParaEditar(estacionamento._id)">Editar</button>
+              <button class="btn btn-danger" (click)="deletarEndereco(estacionamento._id)">DELETAR</button>
+          </td>
+        </tr>
+      </table>
+</div>
+
+<h1>Atualizar Endereço de Estacionamento</h1>
+<form [formGroup]="atualizarEnderecoForm" (ngSubmit)="onPutSubmit()" method="PUT" class="mt-5">
+  <div class="form-group">
+    <input type="hidden" placeholder="id" class="mr-2 form-control mr-sm-2" formControlName="_id">
+    <input type="text" placeholder="Nome do logradouro" class="mr-2 form-control mr-sm-2 mt-2" formControlName="nomeLogradouro">
+    <input type="text" placeholder="Número" class="mr-2 form-control mr-sm-2 mt-2" formControlName="numero">
+    <input type="text" placeholder="CEP" class="mr-2 form-control mr-sm-2 mt-2" formControlName="cep">
+    <input type="text" placeholder="bairro" class="mr-2 form-control mr-sm-2 mt-2" formControlName="bairro">
+    <input type="text" placeholder="cidade" class="mr-2 form-control mr-sm-2 mt-2" formControlName="cidade">
+    <input type="text" placeholder="estado" class="mr-2 form-control mr-sm-2 mt-2" formControlName="estado">
+  </div>
+  <button type="submit" class="btn btn-success my-2 my-sm-0">Atualizar</button>
+</form>
